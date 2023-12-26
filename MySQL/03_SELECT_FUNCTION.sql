@@ -317,7 +317,7 @@ FROM employee
 ORDER BY 2;
 
 /*
-	null 처리 함수alter
+	null 처리 함수
     
     COALESCE |IFNULL(값, 값이 NULL일 경우 반환할 값)
 */
@@ -342,7 +342,7 @@ SELECT nullif('123', '456');	-- 123 일치하지 않기 때문에 값1 반환
 SELECT nullif('1234', 1234);	-- null. 같은 것으로 인식
 
 /*
-	IF(값1, 값2, 값3) | IF(조건, 조건T인경우, 조건FALSE인경우)
+	IF(값1, 값2, 값3) | IF(조건, 조건T인경우, 조건F인경우)
     - 값1이 null이 아니면 값2 반환, null이면 값3 반환
 */
 SELECT emp_name, bonus, IF(bonus, 0.7, 0.1) 보너스
@@ -363,8 +363,8 @@ FROM employee;
 -- 직급 코드가 j5인 사원은 급여를 20% 인상
 -- 그 외의 사원은 급여를 5%만 인상
 
-SELECT job_code, salary, format(if(job_code = 'J7', salary*1.1, IF(job_code ='j6', salary*1.15, IF(job_code = 'j5', salary*1.2, salary*1.05 ))), 0) as 인상된급여
+SELECT emp_name, job_code, salary, format(if(job_code = 'J7', salary*1.1, IF(job_code ='j6', salary*1.15, IF(job_code = 'j5', salary*1.2, salary*1.05 ))), 0) as 인상된급여
 FROM employee
-ORDER BY 1, 4 DESC;
+ORDER BY 2, 4 DESC;
 
 

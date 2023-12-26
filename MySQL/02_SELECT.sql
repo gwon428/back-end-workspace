@@ -271,7 +271,7 @@ OR job_code = 'J2' AND salary >= 2000000;
 
 /* 연산자 우선순위
 	0. ()
-	1. 산술연산자 : *-, /, DIV, %, MOD, +, -
+	1. 산술연산자 : *, /, DIV, %, MOD, +, -
     2. 비교연산자 : =, <, <=, >, >=, <>, !=, ^=
     3. IS NULL / LIKE / IN
     4. BETWEEN AND

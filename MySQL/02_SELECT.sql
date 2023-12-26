@@ -260,33 +260,102 @@ WHERE dept_code IN ('D6', 'D5', 'D8');
 -- 1. 직급코드가 J7이거나 J2인 사원들 중 급여가 200만원 이상인 사원들의 모든 컬럼 조회
 SELECT *
 FROM employee
-WHERE job_code IN ('J7','J2') AND salary >= 2000000;
+WHERE job_code IN ('J7','J2')
+AND salary >= 2000000;
+
+-- 연산자 우선순위 : AND가 OR보다 우선수위가 높음 (주의!!)
+SELECT *
+FROM employee
+WHERE job_code = 'J7'
+OR job_code = 'J2' AND salary >= 2000000;
+
+/* 연산자 우선순위
+	0. ()
+	1. 산술연산자 : *-, /, DIV, %, MOD, +, -
+    2. 비교연산자 : =, <, <=, >, >=, <>, !=, ^=
+    3. IS NULL / LIKE / IN
+    4. BETWEEN AND
+    5. NOT
+    6. AND
+    7. OR
+*/
 
 -- 2. 사수가 없고 부서배치도 받지 않은 사원들의 사원명, 사수사번, 부서코드 조회
 SELECT emp_name, manager_id, dept_code
 FROM employee
-WHERE manager_id IS NULL AND dept_code IS NULL;
+WHERE manager_id IS NULL
+AND dept_code IS NULL;
 
 -- 3. 연봉(보너스 포함 X)이 3000만원 이상이고 보너스를 받지 않은 사원들의 사번, 사원명, 급여, 보너스 조회
 SELECT emp_id, emp_name, salary, bonus
 FROM employee
-WHERE salary*12 >= 30000000 AND bonus IS NULL;
+WHERE salary*12 >= 30000000
+AND bonus IS NULL;
 
 -- 4. 입사일이 '1995-01-01' 이상이고 부서배치를 받은 사원들의 사번, 사원명, 입사일, 부서코드 조회
 SELECT emp_id, emp_name, hire_date, dept_code
 FROM employee
-WHERE hire_date >= '1995-01-01' AND dept_code IS NOT NULL;
+WHERE hire_date >= '1995-01-01'
+AND dept_code IS NOT NULL;
 
 -- 5. 급여가 200만원 이상 500만원 이하이고 입사일이 '2001-01-01' 이상이고 보너스를 받지 않는 사원들의 사번, 사원명, 급여, 입사일, 보너스 조회
 SELECT emp_id, emp_name, salary, hire_date, bonus
 FROM employee
-WHERE salary BETWEEN 2000000 AND 5000000 AND hire_date >= '2001-01-01' AND bonus IS NULL;
+WHERE salary BETWEEN 2000000 AND 5000000
+AND hire_date >= '2001-01-01'
+AND bonus IS NULL;
 
 -- 6. 보너스 포함 연봉이 NULL이 아니고 이름에 '하'가 포함되어 있는 사원들의 사번, 사원명, 급여, 보너스 포함 연봉 조회(별칭)
 -- 보너스 포함 연봉 : (SALARY + SALARY * BONUS) * 12
 SELECT emp_id, emp_name, salary, (SALARY + SALARY*BONUS)*12 as 연봉
 FROM employee
-WHERE emp_name LIKE '%하%' AND (SALARY + SALARY*BONUS)*12 IS NOT NULL;
+WHERE emp_name LIKE '%하%'                                                                                            
+AND (SALARY + SALARY*BONUS)*12 IS NOT NULL;
+
+/* ORDER BY
+	- SELECT문 가장 마지막 줄에 작성 뿐만 아니라 실행 순서 또한 마지막에 실행
+    
+    3. SELECT 컬럼, 컬럼, ...
+    1. FROM 테이블명
+    2. WHERE 조건식
+    4. ORDER BY 정렬하고자 하는 컬럼값 [ASC|DESC];
+	
+    - ASC 오름차순 정렬 (생략 시 기본값)
+    - DESC 내림차순 정렬
+*/
+-- 전체 사원의 사원명, 보너스 조회
+SELECT emp_name, bonus
+FROM employee
+WHERE bonus IS NOT NULL
+-- ORDER BY bonus;	-- 보너스 기준 오름차순 정렬 (NULL이 맨앞)
+ORDER BY bonus DESC; -- 보너스 기준 내림차순 정렬 (NULL이 맨뒤)
+-- ORDER BY 2 DESC; -- 보너스 기준 내림차순 정렬 (숫자는 SELECT 컬럼값에 준 인덱스값)
+
+/* LIMIT
+	- ORDER BY 절보다 뒤에 조건을 걸고 싶을 때 사용
+    - 출력되는 행 수를 제한하는 MySQL 전용 비표준 구문
+    - 데이터 양을 제한하고자 할 때 유용
+*/
+-- 연봉이 높은 5명의 사원의 사원명, 급여 조회
+SELECT emp_name, salary
+FROM employee
+ORDER BY 2 DESC
+LIMIT 5;
+
+-- 페이징 처리를 위함 LIMIT.
+-- LIMIT 절은 두 개의 값이 있을 수 있음
+-- 첫번째 값은 오프셋(offset, 0부터 시작) => 시작 행을 지정,
+-- 두번째 값은 반환할 최대 행 수를 지정
+
+SELECT emp_name, salary
+FROM employee
+ORDER BY 2 DESC
+LIMIT 5, 5;  -- = (LIMIT 10 OFFSET 5;)
+
+
+
+
+
 
 
 

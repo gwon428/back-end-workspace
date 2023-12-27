@@ -367,4 +367,132 @@ SELECT emp_name, job_code, salary, format(if(job_code = 'J7', salary*1.1, IF(job
 FROM employee
 ORDER BY 2, 4 DESC;
 
+/*
+	CASE WHEN 조건식 1 THEN 결과값 1
+		WHEN 조건식 2 THEN 결과값 2
+        ...
+        ELSE 결과값 N
+	END
+    
+    -> if ~ else if문과 유사
+*/
+
+ SELECT emp_name, job_code, salary,
+ FORMAT (CASE WHEN job_code = 'J7' THEN salary*1.1
+	WHEN job_code = 'J6' THEN salary*1.5
+	WHEN job_code = 'J5' THEN salary*1.2
+	ELSE salary*1.05
+	END,0) "인상된 급여"
+FROM employee
+ORDER BY 2;
+
+SELECT
+	emp_id, emp_name, emp_no,
+	CASE WHEN substr(emp_no, 8, 1) = 1 THEN '남자'
+		WHEN substr(emp_no, 8, 1) = 2 THEN '여자'
+        ELSE "잘못된 주민번호입니다"
+        END "성별"
+FROM employee;
+
+-- 사원명, 급여, 급여 등급(1~4등급) 조회
+-- SALARY 값이 500만원 초과일 경우 1등급
+-- SALARY 값이 500만원 이하 350만원 초과일 경우 2등급
+-- SALARY 값이 350만원 이하 200만원 초과일 경우 3등급
+-- 그 외의 경우 4등급
+
+SELECT emp_name "사원명", format(salary,0) "급여",
+	CASE WHEN salary > 5000000 THEN "1등급"
+		WHEN salary > 3500000 THEN "2등급"
+        WHEN salary > 2000000 THEN "3등급"
+        ELSE "4등급"
+        END "급여 등급"
+	FROM employee
+    ORDER BY 2 DESC, 3;
+
+-- 그룹함수(집계함수)----------------------------------------------------------------
+-- n개의 값을 읽어서 1개의 결과값을 리턴 (그룹별로 함수 실행 결과 반환)
+/*
+	그룹함수 --> 결과값 1개!
+    - 대량의 데이터들로 집계나 통계 같은 작업을 처리해야 하는 경우 사용되는 함수들
+    - 모든 그룹함수는 NULL 값을 자동으로 제외하고 값이 있는 것들만 계산
+    
+    SUM(숫자)
+    - 해당 컬럼 값들의 총 합계를 반환
+*/
+-- 전체 사원의 총 급여 합 조회
+SELECT format(SUM(salary),0) AS "급여 합계"
+FROM employee;
+
+-- 부서코드가 D5인 사원들의 총 연봉(급여 * 12) 합 조회
+SELECT format(sum(salary*12), 0) as '부서 D5 연봉 합'
+FROM employee
+WHERE dept_code = 'D5';
+ /*
+	AVG(숫자)
+    - 해당 컬럼 값들의 평균을 반환
+    - 모든 그룹 함수는 NULL 값을 자동으로 제외하기 때문에 AVG 함수를 사용할 때는 COALESCE 또는 IFNULL 함수와 함께 
+ */
+ -- 전체 사원의 평균 급여 조회
+SELECT avg(salary), avg(ifnull(salary,0)), avg(bonus), avg(ifnull(bonus,0))
+FROM employee;
+
+/*
+	MIN|MAX(모든타입의컬럼)
+    - 컬럼 자리에 문자, 날짜도 올 수 있음
+    - MIN : 해당 컬럼 값들 중에 가장 작은 값을 반환
+    - MAX : 해당 컬럼 갓들 중에 갖아 큰 값을 반환
+*/
+
+-- 가장 작은 값에 해당하는 사원명, 급여, 입사일
+-- 가장 큰 값에 해당하는 사원명, 급여, 입사일 조회
+SELECT MIN(emp_name), MIN(salary), MIN(hire_date),
+	MAX(emp_name), MAX(salary), MAX(hire_date)
+FROM employee;
+
+/*
+	COUNT(*|컬럼|DISTINCT 컬럼)
+    - DISTINCT : 중복된 값 한번만 표시
+    - 컬럼 또는 행의 개수를 세서 반환
+    
+    COUNT (*) : 모든 조회 결과에 해당하는 모든 행 개수를 반환
+    COUNT (컬럼) : 해당 컬럼값이 NULL이 아닌 행 개수를 반환 (NULL이 없으면 *와 같은 결과값)
+    COUNT (DISTINCT 컬럼) : 해당 컬럼값의 중복을 제거한 행 개수를 반환
+*/
+-- 전체 사원 수 조회
+SELECT COUNT(*)
+FROM employee;
+
+-- 보너스를 받은 사원 수 조회
+SELECT COUNT(bonus)
+FROM employee;
+
+-- 부서가 배치된 사원 수 조회
+SELECT COUNT(dept_code)
+FROM employee;
+
+-- 현재 사원들이 속해있는 부서 수 조회
+SELECT COUNT(distinct dept_code)
+FROM employee;
+
+-- 현재 사원들이 분포되어 있는 직급 수 조회
+SELECT COUNT(distinct job_code) 
+FROM employee;
+
+-- 퇴사한 직원의 수 조회 (ent_date | ent_yn이 y인 경우)
+SELECT COUNT(ent_date) 
+FROM employee;
+
+SELECT COUNT(*) 
+FROM employee
+WHERE ent_yn = 'y';
+
+
+
+
+
+
+
+
+
+
 

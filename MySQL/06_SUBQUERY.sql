@@ -56,7 +56,7 @@ FROM employee
 	JOIN job USING (job_code)
     JOIN department ON (dept_code = dept_id)
 WHERE dept_code = (SELECT dept_code
-			FROM employee
+			FROM employee 
 			-- JOIN department ON (dept_code = dept_id)
 			WHERE emp_name = '전지연')
 		AND emp_name <> '전지연';

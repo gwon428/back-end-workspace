@@ -44,8 +44,8 @@ WHERE title LIKE 'NOON PAPI';
 -- film_category : film_category, category_id 
 -- category : category_id, name => 추출!!!
 -- customer : customer_id, email
--- -- inventory : inventory_id, film_id
--- -- rental : inventory_id, customer_id
+-- inventory : inventory_id, film_id
+-- rental : inventory_id, customer_id
 
 SELECT name, count(*)
 FROM rental

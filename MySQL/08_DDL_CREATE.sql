@@ -393,7 +393,7 @@ CREATE TABLE member(
 	mem_no INT AUTO_INCREMENT PRIMARY KEY,
     mem_name VARCHAR(20) NOT NULL,
     mem_age INT,
-    hobby VARCHAR(20) DEFAULT '노래',
+    hobby VARCHAR(20) DEFAULT '노래',             
     enroll_date DATE DEFAULT (current_date)
 );
 

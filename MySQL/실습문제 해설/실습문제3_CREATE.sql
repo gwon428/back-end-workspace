@@ -5,6 +5,13 @@
 --    컬럼 : pub_no(출판사번호) -- 기본 키
 --           pub_name(출판사명) -- NOT NULL
 --           phone(전화번호)
+DROP TABLE tb_publisher;
+CREATE TABLE tb_publisher (
+	pub_no INT AUTO_INCREMENT PRIMARY KEY,
+    pub_name VARCHAR(20) NOT NULL,
+    phone VARCHAR(20)
+	);
+
 
 -- 2. 도서들에 대한 데이터를 담기 위한 도서 테이블 (tb_book)
 --    컬럼 : bk_no (도서번호) -- 기본 키
@@ -13,6 +20,15 @@
 --           bk_price(가격)
 --           bk_pub_no(출판사 번호) -- 외래 키(tb_publisher 테이블을 참조하도록)
 --    조건 : 이때 참조하고 있는 부모 데이터 삭제 시 자식 데이터도 삭제 되도록 옵션 지정
+DROP TABLE tb_book;
+CREATE TABLE tb_book (
+	bk_no INT AUTO_INCREMENT PRIMARY KEY,
+    bk_title VARCHAR(50) NOT NULL,
+    bk_author VARCHAR(20) NOT NULL,
+    bk_price INT,
+    pub_no INT
+    -- FOREIGN KEY (bk_pub_no) REFERENCES tb_publisher2(pub_no) ON DELETE CASCADE
+    );
 
 
 -- 3. 회원에 대한 데이터를 담기 위한 회원 테이블 (tb_member)
@@ -26,6 +42,18 @@
 --           status(탈퇴여부)     -- 기본값 'N' / 'Y' 혹은 'N'만 입력되도록 제약조건
 --           enroll_date(가입일)  -- 기본값 현재날짜
 
+DROP TABLE tb_member;
+CREATE TABLE tb_member(
+	member_no INT AUTO_INCREMENT PRIMARY KEY,
+    member_id VARCHAR(30) UNIQUE NOT NULL,
+    membe_pwd VARCHAR(30) NOT NULL,
+    member_name VARCHAR(20) NOT NULL,
+    gender CHAR(1) CHECK (gender IN ('M', 'F')),
+    address VARCHAR (100),
+    phone VARCHAR(20),
+    status CHAR(1) CHECK (status IN ('Y', 'N')) DEFAULT 'N',
+    enroll_date DATE DEFAULT (current_date())
+);
 
 -- 4. 도서를 대여한 회원에 대한 데이터를 담기 위한 대여 목록 테이블(tb_rent)
 --    컬럼 : rent_no(대여번호) -- 기본 키
@@ -33,6 +61,16 @@
 --           rent_book_no(대여 도서번호) -- 외래 키(tb_book와 참조)
 --           rent_date(대여일) -- 기본값 현재날짜
 --    조건 : 이때 부모 데이터 삭제 시 NULL 값이 되도록 옵션 설정
+DROP TABLE tb_rent;
+CREATE TABLE tb_rent (
+	rent_no INT AUTO_INCREMENT PRIMARY KEY,
+    mem_no INT,
+    bk_no INT,
+    rent_date DATE DEFAULT (current_date())
+    -- FOREIGN KEY (rent_mem_no) REFERENCES tb_member2(member_no) ON DELETE SET NULL,
+    -- FOREIGN KEY (rent_book_no) REFERENCES tb_rent2(book_no) ON DELETE SET NULL
+    );
+
 
 INSERT INTO tb_rent VALUES(1, 1, 2, default);
 INSERT INTO tb_rent VALUES(2, 1, 3, default);

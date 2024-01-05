@@ -353,7 +353,7 @@ SELECT emp_name, dept_code, IF(dept_code IS NOT NULL, '부서있음', '부서없
 FROM employee;
 
 -- 사번, 사원명, 주민번호, 성별(남, 여) 조회
-SELECT emp_id, emp_name, emp_no, IF(substr(emp_no, 8, 1) = 1, '남', '여') as 성별
+SELECT emp_id, emp_name, emp_no, IF(substr(emp_no, 8, 1) = 1, '남', '여') 성별
 FROM employee;
 
 -- 사원명, 직급 코드(job_code), 기존 급여(salary), 인상된 급여 조회

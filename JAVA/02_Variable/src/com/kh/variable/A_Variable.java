@@ -49,6 +49,7 @@ public class A_Variable {
 		 */
 
 		// * 기본 자료형(Primitive type): 실제 값을 저장
+		// 8개 -> boolean, char, byte, short, int, long, float, double
 		// 스택 메모리에 생성된 공간에 실제 변수값이 저장
 // 1. 논리형: 1byte(=8bit)
 		boolean isTrue; // 변수 선언
@@ -66,8 +67,8 @@ public class A_Variable {
 		byte bNum = 1;
 		bNum = 127;
 		// bNum = 128; // 에러 => 오버플로우(Overflow): byte 타입이 표현할 수 있는 최대 표현 범위보다 큰 수를 저장하려고
-		// 했기 때문!
-		// bNum = -129; // 에러 => 언더플로우(UnderFlow):
+		// 했기 때문
+		// bNum = -129; // 에러 => 언더플로우(UnderFlow)
 
 // 2) short: 2byte 2^16
 		short sNum = 128;
@@ -97,50 +98,49 @@ public class A_Variable {
 		// * 변수의 네이밍 규칙 *
 		// 1. 대소문자 구분한다.
 		int number;
-		//String number;	- 에러! 자료형이 달라도 변수명이 같으면 에러 발생
+		// String number; - 에러! 자료형이 달라도 변수명이 같으면 에러 발생
 		int NUMBER;
 		int Number;
 		// JAVA는 number, NUMBER, Number를 모두 다른 변수로 인식한다.
 
 		// 2. 숫자로 시작하면 안 된다.
-		//int 1age;			- 에러! 숫자로 시작하면 안됨.
+		// int 1age; - 에러! 숫자로 시작하면 안됨.
 		int a2g3e4;
-		
+
 		// 3. 특수 문자는 '_', '$'만 사용이 가능하다.
-		int _age;			// 특수문자로는 시작 가능!
+		int _age; // 특수문자로는 시작 가능!
 		int age$;
-		
+
 		// 4. 예약어(Reserved word)를 사용하면 안 된다.
-		//int public;
-		//int void;
-		//int int;
-		//int class;
+		// int public;
+		// int void;
+		// int int;
+		// int class;
 		int class2;
-		
+
 		// 5. (권장사항) 낙타표기법(CamelCase)
 		// 첫글자는 항상 소문자, 여러 단어가 오면 대문자로 구분
 		int maxnumber;
-		int maxNumber;		
-		int max_number;		// 자바에서 X
-		
+		int maxNumber;
+		int max_number; // 자바에서 X
+
 	}
-	
+
 	public void constant() {
-		/*	상수
+		/*
+		 * 상수
 		 * 
-		 *	final 자료형 변수명;
+		 * final 자료형 변수명;
 		 *
-		 *	- 변하지 않는 값으로 특정 변수의 값이 변경되는 걸 원하지 않을 때 사용
-		 *	- 초기화 이후에는 값을 변경할 수 없다.
-		 * */
+		 * - 변하지 않는 값으로 특정 변수의 값이 변경되는 걸 원하지 않을 때 사용 - 초기화 이후에는 값을 변경할 수 없다.
+		 */
 		int age = 20;
 		age = 25;
 		System.out.println(age);
-		
-		final int AGE = 30; 
-		//AGE = 35; 		- 에러 발생! final로 상수 처리 했기 때문에 값이 변경될 수 X.
-		
-		
+
+		final int AGE = 30;
+		// AGE = 35; - 에러 발생! final로 상수 처리 했기 때문에 값이 변경될 수 X.
+
 	}
 
 }

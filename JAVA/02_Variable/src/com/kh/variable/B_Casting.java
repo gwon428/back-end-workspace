@@ -26,7 +26,7 @@ public class B_Casting {
 		float f = 1;	// 4byte
 		double d = f;	// 8byte : float -> double
 		
-		// 정수 -> 실수 가능!
+		// 정수 -> 실수 가능!	(정수는 실수에 포함되어 있기 때문)
 		d = i;	// int -> double
 		
 		f = l;	// 8byte(long) -> 4byte(float)
@@ -47,10 +47,10 @@ public class B_Casting {
 	
 	/*	강제 형 변환 (명시적 형 변환)
 	 * 
-	 * 	(자료형) 데이터;
+	 * 	변환할자료형 변수 = (자료형) 데이터;
 	 * 
 	 * 	- 범위가 큰 크기의 자료형의 데이터를 작은 크기의 자료형으로 변환하려고 할 때 사용 
-	 * 	- 강제 형 변환의 경우 데이터의 손실이 발생할 수 있다.
+	 * 	- 강제 형 변환의 경우 '데이터의 손실'이 발생할 수 있다.
 	 * 
 	 * */
 	public void casting() {
@@ -89,21 +89,5 @@ public class B_Casting {
 		char ch = 52143;
 		System.out.println(ch);		// 52143 -> 쮯
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

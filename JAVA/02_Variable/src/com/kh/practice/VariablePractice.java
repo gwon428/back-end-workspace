@@ -5,13 +5,15 @@ import java.util.Scanner;
 
 public class VariablePractice {
 
+	Scanner sc = new Scanner(System.in)
+			;
 	public static void main(String[] args) {
 		VariablePractice v = new VariablePractice();
 		
-		v.method1();
-		v.method2();
-		v.method3();
-		v.method4();
+//		v.method1();
+//		v.method2();
+//		v.method3();
+//		v.method4();
 		v.method5();
 	}
 
@@ -43,7 +45,6 @@ public class VariablePractice {
 	}
 	
 	public void method3() {
-		Scanner sc = new Scanner(System.in);
 		System.out.print("문자열을 입력하세요 : ");
 		String input = sc.nextLine();
 		char first = input.charAt(0);
@@ -54,9 +55,8 @@ public class VariablePractice {
 	}
 
 	public void method4() {
-		Scanner sc1 = new Scanner(System.in);
 		System.out.print("문자 : ");
-		String input = sc1.nextLine();
+		String input = sc.nextLine();
 		char text = input.charAt(0);
 		
 		char ch = (char) text;
@@ -66,25 +66,24 @@ public class VariablePractice {
 	}
 	
 	public void method5() {
-		Scanner sc2 = new Scanner(System.in);
 		System.out.print("국어 : ");
-		int kor = sc2.nextInt();
-		sc2.nextLine();
+		int kor = sc.nextInt();
+		sc.nextLine();
 		
 		System.out.print("영어 : ");
-		int eng = sc2.nextInt();
-		sc2.nextLine();
+		int eng = sc.nextInt();
+		sc.nextLine();
 		
 		System.out.print("수학 : ");
-		int math = sc2.nextInt();
-		sc2.nextLine();
+		int math = sc.nextInt();
+		sc.nextLine();
 		
 		int sum = kor + eng + math;
-		System.out.println("총점 : " + sum);
+		System.out.printf("총점 : %d\n" , sum);
 		
-		double div = sum / 3;
-		System.out.println(div);
-		System.out.printf("평균 : %.2f", div);
+	
+		double div = (double) (sum) / 3.0;
+		System.out.printf("평균 : %.2f", (double) (sum) / 3.0);
 	}
 	
 }

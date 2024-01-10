@@ -49,7 +49,7 @@ public class Hello {	// 클래스 명은 클래스 파일명과 동일해야 한
  * 		= JVM + Java API(lib/src.zip)
  * - JVM(Java Virtual Machine): 자바 가상 머신
  * 
- * * 자바 프로그램 실행 단꼐 *
+ * * 자바 프로그램 실행 단계 *
  * 1. 확장자가 .java인 소스파일을 작성한다.
  * 2. 작성된 소스파일을 자바 컴파일러(javac.exe)로 컴파일하여 확장자가 .class인 바이트코드(기계어)로 번역한다.
  * 3. 번역된 바이트코드(기계어)를 JVM의 자바 인터프리터(java.exe)를 이용해 실행한다.

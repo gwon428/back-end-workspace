@@ -254,8 +254,7 @@ SELECT emp_id, emp_name, dept_title, job_name, local_name, national_code, sal_le
 FROM employee
 	JOIN department ON (dept_code = dept_id)
     JOIN job USING (job_code)
-    JOIN location ON (l
-    -ocation_id = local_code)
+    JOIN location ON (location_id = local_code)
     JOIN national USING (national_code)
     JOIN sal_grade ON (salary BETWEEN min_sal AND max_sal) ;
 

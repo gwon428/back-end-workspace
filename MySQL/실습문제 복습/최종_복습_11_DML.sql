@@ -18,15 +18,15 @@ FROM kh.employee
 WHERE 1=0;
 
 INSERT INTO emp_dept
-	SELECT emp_id, emp_name, dept_code, hire_date
-    FROM kh.employee
-    WHERE dept_code = 'D1';
-    
+SELECT emp_id, emp_name, dept_code, hire_date
+FROM kh.employee
+WHERE dept_code = 'D1';
+
 INSERT INTO emp_manager
-	SELECT emp_id, emp_name, manager_id
-    FROM kh.employee
-    WHERE dept_code = 'D1';
-    
+SELECT emp_id, emp_name, manager_id
+FROM kh.employee
+WHERE dept_code = 'D1';
+
 -- UPDATE
 /*UPDATE 테이블명 
     SET 컬럼명 = 변경하려는값,
@@ -38,6 +38,7 @@ CREATE TABLE emp_salary
 SELECT *
 FROM kh.employee;
 -- emp_salary에서 선동일 사장의 급여를 7000000원으로, 보너스를 0.2로 하락
+
 UPDATE emp_salary
 SET salary = 7000000,
 	bonus = 0.2

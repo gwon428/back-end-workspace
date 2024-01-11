@@ -82,8 +82,8 @@ public class VariablePractice {
 		System.out.printf("총점 : %d\n" , sum);
 		
 	
-		double div = (double) (sum) / 3.0;
-		System.out.printf("평균 : %.2f", (double) (sum) / 3.0);
+		double div = (sum) / 3.0;
+		System.out.printf("평균 : %.2f", div);
 	}
 	
 }

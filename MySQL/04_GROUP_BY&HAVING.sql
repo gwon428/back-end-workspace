@@ -60,7 +60,7 @@ HAVING count(bonus) = 0;
 -- 보너스를 받는 사원이 있는 부서들만 조회
 SELECT dept_code, count(*)
 FROM employee
-WHERE bonus IS NULL
+WHERE bonus IS NOT NULL
 GROUP BY dept_code;
 
 /*

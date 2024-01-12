@@ -44,7 +44,8 @@ INSERT INTO emp(emp_id, emp_name, dept_title, hire_date) VALUES (400, '백은호
 
 	-- 컬럼을 순서대로 넣을 필요는 없지만, 삽입 쿼리문 내의 순서는 맞춰야 함.
 INSERT INTO emp(emp_name, dept_title, emp_id) VALUES ('양주란', '보안팀', 500);
-
+DELETE FROM emp
+WHERE emp_id = 500;
 	-- 기본값이 부여된 컬럼을 제외하고 입력해도 정상적으로 데이터 삽입 가능 
 INSERT INTO emp(emp_id, emp_name) VALUES (600, '유희연');
 
@@ -54,6 +55,7 @@ INSERT INTO emp(emp_id, dept_title) VALUES (700, '마켓팅팀');
 
 -- 3)
 -- kh.employee 테이블에서 사번, 이름, 부서명, 입사일을 그대로 가져오기
+SELECT * FROM emp;
 INSERT INTO emp
 SELECT emp_id, emp_name, dept_title, hire_date
 FROM kh.employee
@@ -159,9 +161,6 @@ WHERE emp_id = 200;
 	-- > emp_id는 NOT NULL 제약 조건이 걸려있기 때문에 수정이 되지 X.
 
 DESC emp_salary;
-
-
-
 
 
 -- 아시아 지역에 근무하는 직원들의 보너스를 0.3으로 변경

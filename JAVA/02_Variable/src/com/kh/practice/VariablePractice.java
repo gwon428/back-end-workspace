@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 public class VariablePractice {
 
-	Scanner sc = new Scanner(System.in)
-			;
+	Scanner sc = new Scanner(System.in); 
+	
 	public static void main(String[] args) {
+
 		VariablePractice v = new VariablePractice();
 		
 //		v.method1();

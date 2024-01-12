@@ -1,4 +1,4 @@
-package com.kh.practice;
+package C_Operator;
 
 import java.util.Scanner;
 

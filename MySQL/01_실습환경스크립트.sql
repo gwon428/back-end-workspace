@@ -1,9 +1,12 @@
-DROP TABLE department;
+DROP TABLE sal_grade;
 DROP TABLE employee;
-DROP TABLE job;
+DROP TABLE department;
 DROP TABLE location;
 DROP TABLE national;
-DROP TABLE sal_grade;
+DROP TABLE job;
+
+
+
 
 CREATE TABLE department(
     dept_id CHAR(2) PRIMARY KEY,

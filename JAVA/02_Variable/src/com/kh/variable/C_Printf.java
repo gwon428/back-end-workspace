@@ -66,6 +66,8 @@ public class C_Printf {
 		
 //		System.out.printf("%c %10s %s\n", str);		// 실행 후 오류 (c != java.lang.String)
 //		System.out.printf("%c %10s %s\n", ch, str);	// 실행 후 오류 (Format specifier '%s')
+		System.out.printf("%c %10s", ch, str);
+		System.out.println();
 		System.out.printf("%c %10s %s\n", ch, str, str);
 		System.out.printf("%c %10s %s\n", ch, str, str, str);	// 오류는 안 남.
 		

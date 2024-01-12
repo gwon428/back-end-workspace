@@ -5,9 +5,9 @@ FROM employee
 GROUP BY dept_code;
 
 -- 직급 코드별 사원 수 조회
-SELECT job_code, count(job_code)
+SELECT dept_code, count(*)
 FROM employee
-group by job_code;
+GROUP BY dept_code;
 
 -- 성별 별(남자/여자) 사원 수
 SELECT IF(substr(emp_no, 8, 1) = 1, '남', '여') 성별, count(*)
@@ -15,17 +15,16 @@ FROM employee
 GROUP BY 성별;
 
 -- 부서별 평균 급여가 300만원 이상인 부서의 평균 급여 조회
-SELECT dept_code, avg(salary)
+SELECT dept_code, format(avg(salary),0)
 FROM employee
 GROUP BY dept_code
 HAVING avg(salary) >= 3000000;
 
 -- 직급별 총 급여의 합이 1000만원 이상인 직급만 조회
-SELECT job_code
+SELECT job_code, format(sum(salary),0)
 FROM employee
-gROUP BY job_code
+GROUP BY job_code
 HAVING sum(salary) >= 10000000;
-
 
 -- 부서별 보너스를 받는 사원이 없는 부서만 조회
 SELECT dept_code, count(bonus)
@@ -39,6 +38,7 @@ SELECT dept_code, count(*)
 FROM employee
 WHERE bonus IS NOT NULL
 GROUP BY dept_code;
+
 
 
 

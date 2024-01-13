@@ -11,10 +11,10 @@ public class VariablePractice {
 
 		VariablePractice v = new VariablePractice();
 		
-//		v.method1();
-//		v.method2();
-//		v.method3();
-//		v.method4();
+		v.method1();
+		v.method2();
+		v.method3();
+		v.method4();
 		v.method5();
 	}
 

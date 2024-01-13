@@ -22,5 +22,23 @@ public class CastingPractice {
 	}
 	
 	public void method2() {
+		System.out.print("국어 : ");
+		int kor = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.print("영어 : ");
+		int eng = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.print("수학 : ");
+		int math = sc.nextInt();
+		sc.nextLine();
+		
+		int sum = kor + eng + math;
+		System.out.printf("총점 : %d\n" , sum);
+		
+	
+		double div = (sum) / 3.0;
+		System.out.printf("평균 : %.2f", div);
 	}
 }

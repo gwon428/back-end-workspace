@@ -56,8 +56,7 @@ public class B_InDecrease {
 		System.out.println("number 1 : " + number1);	// 13
 		System.out.println("number 2 : " + number2);	// 20
 		System.out.println("number 3 : " + number3);	// 29
-	
-		
+
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.kh.practice;
+package D_Control;
 
 class LoopPractice {
  

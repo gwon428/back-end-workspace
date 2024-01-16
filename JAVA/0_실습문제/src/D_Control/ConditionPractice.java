@@ -17,7 +17,7 @@ public class ConditionPractice {
        양수만 입력해주세요.
      */
     public void practice1() {
-    	
+    	System.out.print("정수 : ");
     }
 
     /*

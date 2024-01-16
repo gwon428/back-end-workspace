@@ -172,9 +172,11 @@ public class LoopPractice {
 		String rsp = "";
 		String result = "";
 		
+		System.out.print("당신의 이름을 입력해주세요 : ");
+    	String name = sc.nextLine();
+		
 		while (true) {
-			System.out.print("당신의 이름을 입력해주세요 : ");
-	    	String name = sc.nextLine();
+
 	    	
 	    	System.out.print("가위바위보 : ");
 	    	String me = sc.nextLine();

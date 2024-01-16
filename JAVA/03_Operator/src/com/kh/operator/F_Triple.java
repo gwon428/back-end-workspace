@@ -108,6 +108,7 @@ public class F_Triple {
 		System.out.print("연산자 입력(+ 또는 -)");
 
 		char ch = sc.nextLine().charAt(0);
+		
 		String result = (ch == '+') ? (i1 + "+" + i2 + "=" + (i1 + i2))
 				: (ch == '-' ? (i1 + "-" + i2 + "=" + (i1 - i2)) : "잘못 입력했습니다.");
 		System.out.println(result);

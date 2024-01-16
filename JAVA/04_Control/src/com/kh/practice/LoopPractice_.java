@@ -10,11 +10,11 @@ public class LoopPractice_ {
 	public static void main(String[] args) {
 		LoopPractice_ l = new LoopPractice_();
 	
-		l.method1();
-		l.method2();
-		l.method3();
-		l.method4();
-		l.method5();
+//		l.method1();
+//		l.method2();
+//		l.method3();
+//		l.method4();
+//		l.method5();
 		l.method6();
 		
 	}
@@ -182,17 +182,17 @@ public class LoopPractice_ {
 			
 			String rsp = "";
 			String result = "";
-			
+			int mi = 0;
 	    	System.out.print("가위바위보 : ");
 	    	String me = sc.nextLine();
-	    	int mi = 0;
 	    	
-	    	if (me == "가위") {
-	    		mi += 1;
-	    	} else if (me == "바위") {
-	    		mi += 2;
-	    	} else if (me == "보") {
-	    		mi += 3;
+	    	
+	    	if (me.equals("가위")) {
+	    		mi = 1;
+	    	} else if (me.equals("바위")) {
+	    		mi = 2;
+	    	} else if (me.equals("보")) {
+	    		mi = 3;
 	    	}
 	    	
 	    	double random = Math.random() * 3+1;
@@ -205,17 +205,30 @@ public class LoopPractice_ {
 	    	} else if (rand == 3) {
 	    		rsp = "보";
 	    	}
+
 	    	
 	    	System.out.println("컴퓨터 : " + rsp);
 	    	System.out.println(name + " : " + me);
 
-	    	if(rsp.charAt(0) == me.charAt(0)) {
+//	    	if(rsp.charAt(0) == me.charAt(0)) {
+//	    		result = "비겼습니다.";
+//	    		System.out.println(result);
+//	    	} else if (rsp.charAt(0) == '가' && me.charAt(0) == '보' || rsp.charAt(0)=='바' && me.charAt(0)== '가' || rsp.charAt(0) == '보' && me.charAt(0) =='바') {
+//	    		result = "졌습니다ㅠ";
+//	    		System.out.println(result);
+//	    	} else if (rsp.charAt(0)=='가' && me.charAt(0) == '바' || rsp.charAt(0)=='바' && me.charAt(0) == '보' || rsp.charAt(0) == '보' && me.charAt(0) == '가'){
+//	    		result = "이겼습니다 !";
+//	    		System.out.println(result);
+//	    		break;
+//	    	}
+	    	
+	    	if (rand == mi) {
 	    		result = "비겼습니다.";
 	    		System.out.println(result);
-	    	} else if (rsp.charAt(0) == '가' && me.charAt(0) == '보' || rsp.charAt(0)=='바' && me.charAt(0)== '가' || rsp.charAt(0) == '보' && me.charAt(0) =='바') {
-	    		result = "졌습니다ㅠ";
+	    	} else if (rand == 1 && mi == 3 || rand == 2 && mi == 1 || rand == 3 && mi == 2) {
+	    		result = "졌습니다ㅠㅠ";
 	    		System.out.println(result);
-	    	} else if (rsp.charAt(0)=='가' && me.charAt(0) == '바' || rsp.charAt(0)=='바' && me.charAt(0) == '보' || rsp.charAt(0) == '보' && me.charAt(0) == '가'){
+	    	} else if (rand == 1 && mi == 2 || rand == 2 && mi == 3 || rand == 3 && mi == 1) {
 	    		result = "이겼습니다 !";
 	    		System.out.println(result);
 	    		break;

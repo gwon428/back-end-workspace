@@ -27,6 +27,8 @@ public class Application {
 		System.out.println("곱하기2 : " + c.multiply(100, 200));
 		System.out.println("나누기 : " + Calculator.divide(c.a, c.b));
 		// static이기 때문에 c.divide가 아닌 Calculator.divide로도 호출이 가능하다
+		System.out.println("팩토리얼 : " + c.factorial(3));
+		System.out.println("팩토리얼2 : " + c.factorial2(3));
 	}
 
 }

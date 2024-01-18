@@ -22,10 +22,15 @@ import com.kh.inheritance.parent.Product;
  		-> Getter/Setter 사용해서 간접 접근 가능
  	
   */
+/**
+ * @author user1
+ *
+ */
 public class Notebook extends Product {
 	
 	private String cpu;
 	
+	// 생성자를 만들지 않으면 기본 생성자 O -> 생성자를 만들게 되는 순간 기본 생성자를 사용할 수 없기 때문에 기본 생성자를 선언해줘야 함.
 	public Notebook() {}
 
 	// 부모 클래스에 대한 것들을 이 생성자를 통해 받아옴
@@ -49,8 +54,26 @@ public class Notebook extends Product {
 		super.setBrand(brand);
 		this.setpCode(pCode);		// this == 나자신 => 부모것까지 this로 접근 가능
 		setName(name);				// 앞에 생략하고 그냥 set도 가능
-		super.setPrice(price);
+
 	}
+
+	public String getCpu() {
+		return cpu;
+	}
+
+	public void setCpu(String cpu) {
+		this.cpu = cpu;
+	}
+
+	// toString을 만들고, 부모의 toString을 호출해서 붙이기
+	@Override
+	public String toString() {
+		return super.toString() + "Notebook [cpu=" + cpu + "]";
+	}
+	
+	
+	
+	
 
 	
 	

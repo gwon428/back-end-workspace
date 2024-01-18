@@ -264,7 +264,29 @@ public class ConditionPractice {
 
      */
     public void practice9() {
+    	System.out.print("숫자 입력 : ");
+    	int num1 = sc.nextInt();
     	
+    	System.out.print("숫자 입력 : ");
+    	int num2 = sc.nextInt();
+    	
+    	System.out.print("연산자를 입력(+, -, *, /, %) : ");
+    	char a = sc.nextLine().charAt(0);
+    	
+    	String result = "";
+    	
+    	if (a == '+' || a == '-' || a == '*' || a == '/' || a == '%') {
+    		switch (a) {
+    		case '+' : result = num1 + " + " + num2 + " = " + (num1 + num2) ;
+    		case '-' : result = num1 + " - " + num2 + " = " + (num1 - num2) ;
+    		case '*' : result = num1 + " * " + num2 + " = " + (num1 * num2) ;
+    		case '/' : result = num1 + " / " + num2 + " = " + (num1 / num2) ;
+    		case '%' : result = num1 + " % " + num2 + " = " + (num1 % num2) ;
+    		}
+    		System.out.println(result);
+    	} else {
+    		System.out.println("잘못 입력하셨습니다. 프로그램을 종");
+    	}
     }
 
     /*

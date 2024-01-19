@@ -15,9 +15,9 @@ public class ConditionPractice {
 //		c.practice5();
 //		c.practice6();
 //		c.practice7();
-		c.practice8();
-		c.practice9();
-		c.practice10();
+//		c.practice8();
+//		c.practice9();
+//		c.practice10();
 		c.practice11();
 	}
 
@@ -265,29 +265,39 @@ public class ConditionPractice {
      */
     public void practice9() {
     	System.out.print("숫자 입력 : ");
-    	int num1 = sc.nextInt();
+    	int num1 = Integer.parseInt(sc.nextLine());
     	
     	System.out.print("숫자 입력 : ");
-    	int num2 = sc.nextInt();
+    	int num2 = Integer.parseInt(sc.nextLine());
     	
     	System.out.print("연산자를 입력(+, -, *, /, %) : ");
     	char a = sc.nextLine().charAt(0);
     	
     	String result = "";
     	
-    	if (a == '+' || a == '-' || a == '*' || a == '/' || a == '%') {
-    		switch (a) {
-    		case '+' : result = num1 + " + " + num2 + " = " + (num1 + num2) ;
-    		case '-' : result = num1 + " - " + num2 + " = " + (num1 - num2) ;
-    		case '*' : result = num1 + " * " + num2 + " = " + (num1 * num2) ;
-    		case '/' : result = num1 + " / " + num2 + " = " + (num1 / num2) ;
-    		case '%' : result = num1 + " % " + num2 + " = " + (num1 % num2) ;
-    		}
-    		System.out.println(result);
-    	} else {
-    		System.out.println("잘못 입력하셨습니다. 프로그램을 종");
-    	}
-    }
+		if (a == '+' || a == '-' || a == '*' || a == '/' || a == '%') {
+			switch (a) {
+			case '+':
+				result = num1 + " + " + num2 + " = " + (num1 + num2);
+				break;
+			case '-':
+				result = num1 + " - " + num2 + " = " + (num1 - num2);
+				break;
+			case '*':
+				result = num1 + " * " + num2 + " = " + (num1 * num2);
+				break;
+			case '/':
+				result = num1 + " / " + num2 + " = " + (num1 / num2);
+				break;
+			case '%':
+				result = num1 + " % " + num2 + " = " + (num1 % num2);
+				break;
+			}
+			System.out.println(result);
+		} else {
+			System.out.println("잘못 입력하셨습니다. 프로그램을 종료합니다.");
+		}
+	}
 
     /*
       10. 아래 예시와 같이 메뉴를 출력하고 메뉴 번호를 누르면 “OO메뉴입니다“를, 종료 번호를 누르면 “프로그램이 종료됩니다.”를 출력하세요
@@ -301,6 +311,36 @@ public class ConditionPractice {
         조회 메뉴입니다.
      */
     public void practice10() {
+    	System.out.println("1. 입력");
+    	System.out.println("2. 수정");
+    	System.out.println("3. 조회");
+    	System.out.println("4. 삭제");
+    	System.out.println("9. 종료");
+    	System.out.print("메뉴 번호를 입력하세요 : ");
+    	int menu = Integer.parseInt(sc.nextLine());
+    	String result = "";
+    	
+    	switch(menu) {
+    	case 1:
+    		result = "입력 메뉴입니다.";
+    		break;
+    	case 2:
+    		result = "수정 메뉴입니다.";
+    		break;
+    	case 3:
+    		result = "조회 메뉴입니다.";
+    		break;
+    	case 4:
+    		result = "삭제 메뉴입니다.";
+    		break;
+    	case 9:
+    		result = "프로그램이 종료됩니다.";
+    		break;
+    	default:
+    		result = "없는 메뉴입니다.";
+    	}
+    	
+    	System.out.println(result);
     	
     }
 
@@ -351,6 +391,40 @@ public class ConditionPractice {
 
      */
     public void practice11() {
+    	System.out.print("중간 고사 점수 : ");
+    	int middleTest = Integer.parseInt(sc.nextLine());
+    	
+    	System.out.print("기말 고사 점수 : ");
+    	int finalTest = Integer.parseInt(sc.nextLine());
+    	
+    	System.out.print("과제 점수 : ");
+    	int task = Integer.parseInt(sc.nextLine());
+    	
+    	System.out.print("출석 횟수 : ");
+    	int ab = Integer.parseInt(sc.nextLine());
+    	
+    	double mid = middleTest * 0.2;
+    	double fin = finalTest * 0.3;
+    	double tas = task * 0.3;
+    	
+    	double sum = mid + fin + tas + ab;
+    	
+    	if (sum >= 70 && ab >= 20*0.7) {
+    		System.out.println("중간 고사 점수(20) : " + mid);
+			System.out.println("기말 고사 점수(30) : " + fin);
+			System.out.println("과제 점수(30) : " + tas);
+			System.out.println("출석 점수(20) : " + ab);
+			System.out.println("총점 : " + sum);
+    		System.out.println("PASS");
+    	} else {
+    		if(ab < 20*0.7) {
+    			System.out.println("FAIL [출석 횟수 부족] (" + ab + "/20)");
+    		}
+    		if(sum < 70) {
+    			System.out.println("FAIL [점수 미달] (총점 : " + sum + ")");
+    			
+    		}
+    	}
     	
         
     }

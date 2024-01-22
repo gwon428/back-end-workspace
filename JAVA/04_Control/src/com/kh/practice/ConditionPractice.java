@@ -135,11 +135,11 @@ public class ConditionPractice {
 		System.out.print("구매한 옷 가격 : ");
 		int price = Integer.parseInt(sc.nextLine());
 
-		if (price > 500000) {
+		if (price >= 500000) {
 			price *= 0.8;
-		} else if (price > 300000) {
+		} else if (price >= 300000) {
 			price *= 0.9;
-		} else if (price > 100000) {
+		} else if (price >= 100000) {
 			price *= 0.95;
 		}
 

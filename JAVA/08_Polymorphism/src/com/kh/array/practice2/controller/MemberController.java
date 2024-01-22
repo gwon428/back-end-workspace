@@ -1,14 +1,11 @@
 package com.kh.array.practice2.controller;
 
-import java.util.Arrays;
-
 import com.kh.array.practice2.model.Member;
 
 public class MemberController {
 	
 	private Member[] memArr = new Member[3];
 	public int count = 0;
-	
 	
 	
 	// 멤버 추가

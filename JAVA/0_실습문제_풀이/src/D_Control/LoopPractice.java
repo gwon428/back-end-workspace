@@ -1,7 +1,21 @@
 package D_Control;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 class LoopPractice {
- 
+	
+	Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) {
+		LoopPractice l = new LoopPractice();
+//		l.method1();
+//		l.method2();
+//		l.method3();
+//		l.method4();
+//		l.method5();
+//		l.method5_sol2();
+		l.method6();
+	}
     /*
         1. 사용자로부터 숫자(1~100) 1개가 입력되었을 때 카운트다운 출력하시오.
         사용자 입력 : 5
@@ -12,12 +26,30 @@ class LoopPractice {
         1
      */
     public void method1() {
-
+    	System.out.print("사용자 입력 : ");
+    	int num = sc.nextInt();
+    	for(int i=num; i>=0; i--) {
+    		System.out.println(i);
+    	}
     }
 
     // 2. 1+(-2)+3+(-4)+...과 같은 식으로 계속 더해나갔을 때, 몇까지 더해야 총합이 100 이상 되는지 출력하시오.
     public void method2() {
-
+    	int sum = 0;
+    	int num = 1;
+    	
+    	while(sum < 100) {
+    		if(num % 2 == 0) {
+    			sum -= num;
+    		} else {
+    			sum += num;
+    		}
+    		if(sum >= 100) {
+    			break;
+    		}
+    		num++;
+    	}
+    	System.out.println("총합이 100 이상이 되려면 " + num + "까지 더해야 한다.");
     }
 
     /*
@@ -29,7 +61,26 @@ class LoopPractice {
 
     */
     public void method3() {
-
+    	System.out.print("문자열 : ");
+    	String str = sc.nextLine();
+    	System.out.print("문자 : ");
+    	char ch = sc.nextLine().charAt(0);
+    	
+    	int count = 0;
+//    	for (int i=0; i < str.length(); i++) {
+//    		if(ch == str.charAt(i)) {
+//    			count += 1;
+//    		}
+//    	}
+    	
+    	//향상된 for문
+//    	for(아이템 하나씩:배열)
+    	// .toCharArray() : 문자열을 문자 배열로 바꾸는 함수
+    	for(char s : str.toCharArray()) {
+    		if(ch == s) count ++;
+    		// str.charAt(i) => 이걸 문자 배열 s로 바꿨으니까 s
+    	}
+    	System.out.println(str + "안에 포함된 " + ch + " 개수 : "  + count);
     }
 
     /*
@@ -43,7 +94,12 @@ class LoopPractice {
         0
      */
     public void method4() {
-
+    	while(true) {
+    		// 본래 Math.random()값의 범위 : 0 <= random < 1
+    		int random = (int) (Math.random() * 11);
+    		System.out.println((int) random);
+    		if (random == 0) break;
+    	}
     }
 
     /*
@@ -58,7 +114,47 @@ class LoopPractice {
 
      */
     public void method5() {
-
+    	int[] dice = new int[6];
+    	
+    	for (int i=0; i<10; i++) {
+    		int random = (int)(Math.random() * 6 + 1);
+    		
+    		switch (random) {
+    		case 1:
+    			dice[0] ++;
+    			break;
+    		case 2:
+    			dice[1] ++;
+    			break;
+    		case 3:
+    			dice[2] ++;
+    			break;
+    		case 4:
+    			dice[3] ++;
+    			break;
+    		case 5:
+    			dice[4] ++;
+    			break;
+    		case 6:
+    			dice[5] ++;
+    			break;
+    		}
+    	}
+    	for(int i=0; i<dice.length;i++) {
+    		System.out.println((i+1) + " : " + dice[i]);
+    	}
+    }
+    
+    public void method5_sol2() {
+int[] dice = new int[6];
+    	
+    	for (int i=0; i<10; i++) {
+    		int random = (int)(Math.random() * 6);	// 0*6 <= random < 1*6;
+    		dice[random]++;
+    	}
+    	for(int i=0; i<dice.length;i++) {
+    		System.out.println((i+1) + " : " + dice[i]);
+    	}
     }
 
     /*
@@ -84,7 +180,43 @@ class LoopPractice {
         이겼습니다 !
     */
     public void method6() {
+    	
+    	String[] rps = {"가위", "바위", "보"};
+    	int win = 0;
+    	int lose = 0;
+    	int draw = 0;
+    	
+    	System.out.print("당신의 이름을 입력해주세요 : ");
+    	String name = sc.nextLine();
+    	
+    	while(true) {
+    		System.out.print("가위바위보 : ");
+    		String input = sc.nextLine();
+    		
+    		int computer = (int) (Math.random() * 3);		// 0 - 가위, 1 - 바위, 2 - 보
+    		System.out.println("컴퓨터 : " + computer);
+    		
+    		int number = Arrays.asList(rps).indexOf(input);
+    		// 배열에서 값으로 인덱스 찾기 -> 사용자에게 입력받은 값을 숫자로 변환
+    		System.out.println(name + " : " + number);
 
+    		if(computer == number) {
+    			// 비겼을 경우
+    			System.out.println("비겼습니다.");
+    			draw ++;
+    		} else if (number == 0 && computer == 2 || number == 1 && computer == 0 || number == 2 && computer == 1) {
+    			// 이겼을 경우
+    			System.out.println("이겼습니다 !");
+    			win++;
+    			break;
+    		} else {
+    			// 졌을 경우
+    			System.out.println("졌습니다 ㅠㅠ");
+    			lose++;
+    		}
+    		
+    	}
+    	System.out.println(draw + "번 비기고, " + lose + "번 지고, " + win + "번 이겼습니다!");
     }
 
 }

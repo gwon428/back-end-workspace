@@ -10,10 +10,12 @@ class LoopPractice {
 		
 //		l.method1();
 //		l.method2();
+//		l.method2_sol();
 //		l.method3();
 //		l.method4();
+		l.method4_sol();
 //		l.method5();
-		l.method6();
+//		l.method6();
 	}
     /*
         1. 사용자로부터 숫자(1~100) 1개가 입력되었을 때 카운트다운 출력하시오.
@@ -52,6 +54,24 @@ class LoopPractice {
 				}
 			}
 		}
+	}
+	
+	public void method2_sol() {
+		int sum = 0;
+    	int num = 1;
+    	
+    	while(sum < 100) {
+    		if(num % 2 == 0) {
+    			sum -= num;
+    		} else {
+    			sum += num;
+    		}
+    		if(sum >= 100) {
+    			break;
+    		}
+    		num++;
+    	}
+    	System.out.println("총합이 100 이상이 되려면 " + num + "까지 더해야 한다.");
 	}
 
     /*
@@ -94,6 +114,16 @@ class LoopPractice {
     		random = (int) random;
     		System.out.println((int) random);
     		if(random == 0) break;
+    	}
+    }
+    
+    public void method4_sol() {
+    	while(true) {
+    		// math.random()의 범위는 0~1이기 때문에 *11까지 괄호로 닫아야 함.
+    		int random = (int) (Math.random() * 11);
+    		System.out.println(random);
+    		if(random == 0) break;
+    		
     	}
     }
 

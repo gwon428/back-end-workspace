@@ -1,10 +1,15 @@
-package F_Object;
+package F_Object.practice2;
 
 import java.util.Scanner;
 
+import F_Object.practice2.controller.SnackController;
+
 public class Application {
+
+	SnackController controll = new SnackController();
 	
 	public static void main(String[] args) {
+
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("스낵류를 입력하세요.");

@@ -53,11 +53,12 @@ public class Application {
 		}
 		System.out.print("대여할 도서 번호 선택 : ");
 		int num = sc.nextInt();
-		//만약 book이 cookbook -> coupon 여부 -> +1 혹은 유지
+		// 만약 book이 cookbook -> coupon 여부 -> +1 혹은 유지
 		// 만약 AccessAge와 비교해서 member의 나이가 적을 경우 대여 불가능
 		if (num < lc.getBookList().length) {
 			switch (num) {
 			case 0:
+
 				lc.info().setCookCoupon(+1);
 				System.out.println("성공적으로 대여되었습니다.");
 				lc.rent(num);
@@ -66,16 +67,10 @@ public class Application {
 				System.out.println("성공적으로 대여되었습니다.");
 				lc.rent(num);
 				break;
+				
 			case 2:
-				if(lc.ageCheck(lc.info().getAge())) {
-					System.out.println("나이 제한으로 대여 불가능입니다.");
-				} else {
-					System.out.println("성공적으로 대여되었습니다.");
-					lc.rent(num);
-				}
-				return;
 			case 3:
-				if(lc.ageCheck2(lc.info().getAge())) {
+				if (lc.ageCheck(num, lc.info().getAge())) {
 					System.out.println("나이 제한으로 대여 불가능입니다.");
 				} else {
 					System.out.println("성공적으로 대여되었습니다.");
@@ -84,7 +79,6 @@ public class Application {
 				return;
 			}
 		}
-		
 
 	}
 }

@@ -7,9 +7,6 @@ public class LibraryController {
 	private Member member = null;
 	private Book[] bookList = new Book[4];
 	
-	private CookBook cb = new CookBook();
-	private AniBook ab = new AniBook();
-	
 	// 인스턴스 초기화 블록 {} : 객체 생성 시 실행되는 블록.
 	{
 		bookList[0] = new CookBook("맛있는 지중해식 레시피", true);
@@ -49,23 +46,11 @@ public class LibraryController {
 		member.setCookCoupon(index);
 	}
 	
-//	public void couponCheck(boolean coupon) {
-//		if(cb.isCoupon()) {
-//			member.setCookCoupon(+1);
-//		} else {
-//		}
-//	}
-	public boolean ageCheck(int age) {
-		if(age < ((AniBook) bookList[2]).getAccessAge()) {
+	public boolean ageCheck(int num, int age) {
+		if(age <= ((AniBook) bookList[num]).getAccessAge()) {
 			return true;
 		} 
 		return false;
 	}
-	
-	public boolean ageCheck2(int age) {
-		if(age < ((AniBook) bookList[3]).getAccessAge()) {
-			return true;
-		} 
-		return false;
-	}
+
 }

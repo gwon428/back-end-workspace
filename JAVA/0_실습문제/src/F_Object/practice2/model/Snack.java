@@ -1,4 +1,4 @@
-package F_Object;
+package F_Object.practice2.model;
 
 public class Snack {
 	private String kind;

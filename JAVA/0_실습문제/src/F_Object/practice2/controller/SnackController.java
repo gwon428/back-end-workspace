@@ -1,4 +1,6 @@
-package F_Object;
+package F_Object.practice2.controller;
+
+import F_Object.practice2.model.Snack;
 
 public class SnackController {
 	private Snack s = new Snack();

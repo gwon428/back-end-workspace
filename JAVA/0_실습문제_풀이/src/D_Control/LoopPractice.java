@@ -146,7 +146,7 @@ class LoopPractice {
     }
     
     public void method5_sol2() {
-int[] dice = new int[6];
+    	int[] dice = new int[6];
     	
     	for (int i=0; i<10; i++) {
     		int random = (int)(Math.random() * 6);	// 0*6 <= random < 1*6;

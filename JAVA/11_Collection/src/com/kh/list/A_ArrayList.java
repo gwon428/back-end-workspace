@@ -1,6 +1,7 @@
 package com.kh.list;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.kh.list.model.Person;
@@ -26,6 +27,10 @@ import com.kh.list.model.Person;
  	- 저장되는 객체를 인덱스로 관리하기 때문에 인덱스로 객체를 검색, 삭제할 수 있는 기능
  	- 중복되는 객체 저장이 가능하고, null값도 저장 가능 
  	
+ *	List의 특징
+ 	- 중복 서용
+ 	- 순서 있음
+ 	
  *	ArrayList
  	- 저장 용량(capacity)을 초과한 객체들이 들어오면 자동적으로 저장 용량이 늘어난다. [용량 세팅을 할 수는 있는데, 자동적으로 용량이 늘어나기 때문에 의미가 거의 없다고 봐도 됨]
  	- 동기화(Synchronized)를 제공하지 않는다.		[[=> 컬렉션 이후 (스레드, 스트림)]]
@@ -39,12 +44,13 @@ public class A_ArrayList {
 
 		A_ArrayList a = new A_ArrayList();
 //		a.method1();
-		a.method2();
+//		a.method2();
+		a.method3();
 	}
 
 	public void method1() {
 //다형성:	List list = new ArrayList();
-		ArrayList<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<String>();
 		
 		list.add("신대규");
 		list.add("정대윤");
@@ -111,11 +117,79 @@ public class A_ArrayList {
 		// 9. empty : 컬렉션이 비어있는지
 		System.out.println("컬렉션이 비어있나요? : " + list.isEmpty());
 		
-//		list.clear();
-//		System.out.println("\nclear 후의 리스트 : " + list);
-//		System.out.println("컬렉션이 비어있나요? : " + list.isEmpty());
+
+		System.out.println("==============================================================");
+		System.out.println(list + "\n\n");
+		
+		// 리스트에 저장된 사람들의 평균 연령
+		int sum = 0;
+		for (int i=0; i < list.size(); i++) {
+			sum += list.get(i).getAge();
+		}
+		System.out.println("평균 연령 : " + sum/(list.size()));
+		
+		System.out.println("향상된 for문 1=====================");
+		sum = 0;
+		for (Person p : list) {
+			sum += p.getAge();
+		}
+		System.out.println("평균 연령 : " + sum/(list.size()));
+		
+		// 저장된 사람들의 이름만 출력
+		for (int i=0; i<list.size(); i++) {
+			System.out.print(list.get(i).getName() + " ");
+		}
+		System.out.println();
+		
+		System.out.println("향상된 for문 2=====================");
+		for(Person p : list) {
+			System.out.println(p.getName());
+		}
+
+		// 삼성동에 사는 사람들만 출력
+		System.out.println("삼성동에 사는 사람 " );
+		for (int i=0; i<list.size(); i++) {
+			if(list.get(i).getAddr().equals("삼성동"))
+//			if(list.get(i).getAddr()=="삼성동")
+			System.out.print(list.get(i) + " ");
+		}
+		System.out.println();
+		
+		System.out.println("향상된 for문 3=====================");
+		for (Person p : list) {
+			if (p.getAddr().equals("삼성동")) System.out.println(p);
+		}
+		
+		// 정렬 (나이 순서대로 출력) => (이름 순서대로 출력)
+		Collections.sort(list);		// Person 객체로 넘어가서 compareTo를 통해 
+		System.out.println(list);
+		
+		
+		// 10. clear
+		list.clear();
+		System.out.println("clear 후의 리스트 : " + list);
+		System.out.println("컬렉션이 비어있나요? : " + list.isEmpty());
 		
 	}
 	
-	 
+	public void method3() {
+		List<String> list = new ArrayList<>();
+		
+		list.add("banana");
+		list.add("apple");
+		list.add("orange");
+		list.add("mango");
+		list.add("grape");
+		
+		// 11. 오름차순 정렬 : Comparable 인터페이스를 구현하고 있는 요소를 가지고 비교한 값들 반환
+		Collections.sort(list);
+		System.out.println(list);
+		
+		// 12. 내림차순 정렬 : sort 메서드를 통해서 오름차순 정렬 후 reverse 메서드를 호출하여 정렬
+		// 기존의 리스트를 거꾸로 해주는 것임. sort가 아님 !!!
+		// 반드시 오름차순이 선행된 후에 reverse를 해야 내림차순 정렬로 출력이 가능
+		Collections.reverse(list);
+		System.out.println(list);
+		
+	}
 }

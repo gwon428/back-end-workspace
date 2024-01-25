@@ -22,19 +22,24 @@ public class Median {
 
 	static int med(int a, int b, int c) {
 		if (a >= b) {
+			// a >= b >= c
 			if (b >= c) {
 				return b;
+			// c >= a >= b
 			} else if (a <= c) {
 				return a;
+			// a >= c >=b
 			} else {
 				return c;
 			}
 			
-			// a < b
+			// c < a < b
 		} else if (a > c) {	
-			return a; 
+			return a;
+			// a < b && a <= c
+			// 	==> a < c < b
 		} else if (b > c) {
-			return c; 
+			return c;
 		} else {
 			return b; 
 		}

@@ -11,8 +11,8 @@ public class ArrayPractice {
 		
 //		a.method1();
 //		a.method2();
-//		a.method3();
-//		a.method4();
+		a.method3();
+		a.method4();
 		a.method5();
 	}
 	/*

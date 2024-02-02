@@ -36,6 +36,9 @@ public class DBConnectionTest1 {
 			// ps.executeQuery()의 반환값이 ResultSet.
 			ResultSet rs = ps.executeQuery();
 			
+			// SELECT 쿼리만 executeQuery()
+			// INSERT, UPDATE, DELETE는 executeUpdate() 
+			
 			while(rs.next()) {
 				String empId = rs.getString("emp_id");
 				String empName = rs.getString("emp_name");

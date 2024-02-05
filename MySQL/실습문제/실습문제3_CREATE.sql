@@ -27,7 +27,7 @@ CREATE TABLE TB_PUBLISHER(
 --    조건 : 이때 참조하고 있는 부모 데이터 삭제 시 자식 데이터도 삭제 되도록 옵션 지정
 DROP TABLE tb_book;
 CREATE TABLE tb_book (
-	bk_no INT PRIMARY KEY,
+	bk_no INT AUTO_INCREMENT PRIMARY KEY ,
     bk_title VARCHAR(20) NOT NULL,
     bk_author VARCHAR(20) NOT NULL,
     bk_price INT,
@@ -55,7 +55,7 @@ SELECT * FROM tb_book;
 --           enroll_date(가입일)  -- 기본값 현재날짜
 DROP TABLE tb_member;
 CREATE TABLE tb_member (
-	member_no INT PRIMARY KEY,
+	member_no INT AUTO_INCREMENT PRIMARY KEY,
     member_id VARCHAR(20) UNIQUE,
     member_pwd VARCHAR(20) NOT NULL,
     member_name VARCHAR(10) NOT NULL,
@@ -111,3 +111,7 @@ FROM tb_rent
 WHERE member_no = 1;
 
 
+DROP TABLE tb_rent;
+DROP TABLE tb_member;
+DROP TABLE tb_book;
+DROP TABLE tb_publisher;

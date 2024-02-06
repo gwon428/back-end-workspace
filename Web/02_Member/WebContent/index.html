@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>회원가입</h1>
+	<form action="register" method="get">
+		<label>이름 : <input type="text" name="name"></label><br>
+		<label>나이 : <input type="text" name="age"></label><br>
+		<label>주소 : <input type="text" name="addr"></label><br>
+		<input type="submit" value="회원가입">
+	</form>
+</body>
+</html>
+
+<!-- 
+	xml (애플리케이션에 대한 전체 설정 정보를 가지고 있는 파일.)
+
+	1. Web Application 실행 시 메모리에 로딩
+	2. xml에 담겨있는 정보를 통해 컨테이너가 Servlet을 구동
+
+	WebServer - HTML, CSS, JavaScript, Image, Text
+	 - 웹 서버에서 해결할 수 있는 단순한 처리
+	 - 정적인 요소
+	
+	WAS - Servlet, JSP
+	 - 웹 서버가 할 수 없는 다양한 로직 수행
+	
+	html에서는 form에 word -> xml에 url-pattern
+	
+	링크로 html에 접근해서 form 태그의 action을 'fs'로 지정 -> xml의 'fs'를 통해 Servlet를 찾아서 매핑
+	
+	input 태그의 name -> 키 (parameter의 key)
+	input 태그의 value -> name을 통해 Servlet에서 parameter를 찾아서, 그 parameter의 value 값을 가져오는 것으로 출력
+
+ -->

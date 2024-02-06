@@ -9,6 +9,14 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <!-- 배포설명자(xml)
+  1. Web Application 시작 시 메모리에 로딩되는 파일. (Web Application 당 하나의 xml 파일을 가짐.
+  2. 요청(request)가 수신되면 xml을 통해 해당 URL을 처리해야 하는 코드(Servlet)에 매핑
+  
+  Servlet(java 파일)을 웹에서 요청할 수 있도록 설정하기 위함
+  -->
+  
   <servlet>
 	<servlet-name>GenericServletTest</servlet-name>
 	<servlet-class>servlet.generic.GenericServletTest</servlet-class>  
@@ -26,4 +34,40 @@
 	<servlet-name>WordServlet</servlet-name>
 	<url-pattern>/word</url-pattern>
 	</servlet-mapping>  
+	
+	<servlet>
+	<servlet-name>FormServlet</servlet-name>
+	<servlet-class>servlet.http.FormServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>FormServlet</servlet-name>
+	<url-pattern>/fs</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>LifecycleServlet</servlet-name>
+	<servlet-class>servlet.life.LifecycleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>LifecycleServlet</servlet-name>
+	<url-pattern>/life</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>ConfigServlet</servlet-name>
+	<servlet-class>servlet.life.ConfigServlet</servlet-class>
+	<init-param>
+		<!-- 폼에서 name, value로 지정했던 것과 비슷한 타입 -->
+		<param-name>name</param-name>
+		<param-value>김유저</param-value>
+	</init-param>
+	<init-param>
+		<param-name>addr</param-name>
+		<param-value>서울</param-value>
+	</init-param>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>ConfigServlet</servlet-name>
+	<url-pattern>/config</url-pattern>
+	</servlet-mapping>
 </web-app>

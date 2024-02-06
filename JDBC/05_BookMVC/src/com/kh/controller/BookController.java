@@ -189,14 +189,14 @@ public class BookController {
 		ArrayList<RentBook> list = new ArrayList<>();
 		
 		Connection conn = getConnect();
-		String query = "SELECT * FROM tb_rent JOIN tb_book ON (bk_no = rent_book_no) JOIN tb_member ON (member_no = rent_mem_no) WHERE member_id = ?";
+		String query = "SELECT rent_no, bk_no, bk_title, bk_author, rent_date, adddate(rent_date, 7) as 반납날짜 FROM tb_rent JOIN tb_book ON (bk_no = rent_book_no) JOIN tb_member ON (member_no = rent_mem_no) WHERE member_id = ?";
 		PreparedStatement ps = conn.prepareStatement(query);
 
 		ps.setString(1, member.getId());
 		ResultSet rs = ps.executeQuery();
 		
 		while(rs.next()) {
-			list.add(new RentBook(rs.getInt("rent_no"), rs.getInt("bk_no"), rs.getString("bk_title"), rs.getString("bk_author"), rs.getDate("rent_date")));
+			list.add(new RentBook(rs.getInt("rent_no"), rs.getInt("bk_no"), rs.getString("bk_title"), rs.getString("bk_author"), rs.getDate("rent_date"), (rs.getDate("반납날짜"))));
 		}
 		close(ps, conn, rs);
 		return list;

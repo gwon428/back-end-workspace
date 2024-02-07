@@ -1,23 +1,23 @@
 package com.kh.model;
 
 public class Book {
-	private int rentno;
+	private int bookno;
 	private String title;
 	private String author;
 	
-	public Book(int rentno, String title, String author) {
+	public Book(int bookno, String title, String author) {
 		super();
-		this.rentno = rentno;
+		this.bookno = bookno;
 		this.title = title;
 		this.author = author;
 	}
 
 	public int getRentno() {
-		return rentno;
+		return bookno;
 	}
 
-	public void setRentno(int rentno) {
-		this.rentno = rentno;
+	public void setRentno(int bookno) {
+		this.bookno = bookno;
 	}
 
 	public String getTitle() {
@@ -38,7 +38,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [반납 번호 : " + rentno + ", 제목 : " + title + ", 저자 : " + author + "]" ;
+		return "Book [책 번호 : " + bookno + ", 제목 : " + title + ", 저자 : " + author + "]" ;
 	}
 
 }

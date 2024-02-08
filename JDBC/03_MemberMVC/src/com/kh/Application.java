@@ -17,7 +17,7 @@ public class Application {
 	}
 	
 	public void mainMenu() throws SQLException, ClassNotFoundException {
-		
+		 
 		try {
 		System.out.println("===== KH 사이트 =====");
 		

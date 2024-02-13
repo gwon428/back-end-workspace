@@ -1,14 +1,15 @@
-package com.kh.model.vo;
+package model.vo;
 
 public class Member {
-	private String id;
-	private String password;
-	private String name;
-
+	String id;
+	String password;
+	String name;
+	
 	public Member() {
 	}
 
 	public Member(String id, String password, String name) {
+		super();
 		this.id = id;
 		this.password = password;
 		this.name = name;
@@ -40,7 +41,8 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "[id=" + id + ", password=" + password + ", name=" + name + "]";
+		return "Member [id=" + id + ", password=" + password + ", name=" + name + "]";
 	}
-
+	
+	
 }

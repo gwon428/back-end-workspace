@@ -21,8 +21,6 @@ public class RegisterServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		
-		Member member = new Member();
-		
 		MemberDAO dao = new MemberDAO();
 		
 		try {
@@ -31,9 +29,10 @@ public class RegisterServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("member", member);
+//		request.setAttribute("member", member);
 		
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+//		request.getRequestDispatcher("index.jsp").forward(request, response);
+		response.sendRedirect("index.jsp");
 	}
 
 }

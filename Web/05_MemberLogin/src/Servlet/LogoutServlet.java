@@ -14,6 +14,7 @@ public class LogoutServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		// getAttribute로 member를 받아와서 member가 null이 아닌 경우 session 죽이기
 		session.invalidate();
 		response.sendRedirect("index.jsp");
 	}

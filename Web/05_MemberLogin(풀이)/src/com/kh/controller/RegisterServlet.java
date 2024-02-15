@@ -17,22 +17,15 @@ public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. 폼 값 받아오기
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		
-		// 2. DAO
 		MemberDAO dao = new MemberDAO();
 		Member member = new Member(id, password, name);
 		
 		try {
-			int result = dao.registerMember(member);
-			if(result == 1) {
-				// 4. 네비게이션
-				response.sendRedirect("/index.jsp");
-			}
-			
+			dao.registerMember(member);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
